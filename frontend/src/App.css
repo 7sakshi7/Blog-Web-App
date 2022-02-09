@@ -1,0 +1,290 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  overflow-x: hidden;
+}
+
+.container-fluid {
+  width: 100%;
+}
+.container {
+  max-width: 1140px;
+  margin: auto;
+  /* border: 1px solid; */
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+ul {
+  list-style: none;
+  margin: 1rem 0;
+}
+li {
+  display: inline-block;
+}
+li a {
+  padding: 0.5rem 0.7rem;
+}
+li a:hover {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 18px;
+}
+a {
+  text-decoration: none;
+}
+
+/* ================================================================================ */
+/* LOGIN */
+/* ================================================================================ */
+
+.image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 91vh;
+}
+.login_image {
+  background: url("../src/images/login.jpg") no-repeat center center/cover;
+}
+.auth_box {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.login_box {
+  width: 50vw;
+  height: 70vh;
+  box-shadow: -8px 10px 31px 4px rgb(0 0 0 / 65%);
+}
+
+.input_group {
+  /* border: 2px solid; */
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+.input_group label {
+  font-size: 1.5rem;
+}
+.input_group input {
+  width: 90%;
+  margin: 0.6rem 0;
+  padding: 0.7rem;
+  font-size: 1.2rem;
+  border-radius: 23px;
+  background: transparent;
+  outline: none;
+  border: 2px solid;
+  font-weight: 800;
+}
+.input_group input:focus {
+  box-shadow: 0px 2px 23px 13px rgb(15 17 17 / 21%);
+}
+.login_btn {
+  padding: 10px 20px;
+  border-radius: 23px;
+  font-size: 1.5rem;
+  outline: 0;
+  border: 0;
+  font-weight: bold;
+  cursor: pointer;
+  background: #bdcb83;
+  transition: all 0.5s;
+}
+.login_btn:hover {
+  color: #f2f2f2;
+  background: #7f5b47;
+}
+
+/* ================================================================================ */
+/* SIGNUP */
+/* ================================================================================ */
+
+.signup_image {
+  background: url("../src/images/signup3.webp") no-repeat center center/cover;
+}
+
+.signup_box {
+  width: 50vw;
+  height: 80vh;
+  box-shadow: -1px 4px 21px 1px rgb(0 0 0 / 56%);
+  box-shadow: -1px 1px 21px 1px rgb(0 0 0/80%);
+}
+.signup_btn {
+  background: #89c7b7;
+}
+
+.signup_btn:hover {
+  background: #6a9693;
+  color: black;
+}
+
+input[type="file"] {
+  border: none;
+}
+
+/* ================================================================================ */
+/* HOME */
+/* ================================================================================ */
+
+.home_body {
+  width: 100%;
+}
+.home_image {
+  width: 100%;
+  background: #8be4e2;
+  margin-bottom: 3rem;
+  margin-top: 0.5rem;
+}
+.home_image > img {
+  /* margin: 0 3rem; */
+  width: 80%;
+  /* box-shadow: -3px 11px 40px 0px rgb(0 0 0 / 30%); */
+  box-shadow: -3px 1px 20px 0px rgb(0 0 0 / 30%);
+  box-shadow: -3px 1px 10px 0px rgb(0 0 0 / 30%);
+  margin: auto;
+  display: block;
+  height: 90vh;
+}
+
+.card {
+  width: 30rem;
+  /* height: 5rem; */
+  margin: 2rem 2rem;
+  /* border: 2px solid; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.card:hover {
+  box-shadow: -3px 3px 37px -11px rgb(0 0 0 / 30%);
+  /* box-shadow: -3px 11px 30px 0px rgb(0 0 0 / 30%); */
+}
+.card img {
+  width: 100%;
+  height: 20rem;
+}
+.card h3 {
+  color: gray;
+}
+
+/* ================================================================================ */
+/* MY BLOG */
+/* ================================================================================ */
+
+.myblog_body {
+  width: 100vw;
+  display: flex;
+}
+.blogs {
+  width: 70vw;
+  padding: 1rem;
+  /* border: 2px solid; */
+}
+.myblog_profile {
+  right: 0;
+  top: 4.3rem;
+  width: 30vw;
+  height: 90vh;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.myblog_header{
+  /* height: 10vh; */
+  /* border: 2px solid; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0;
+}
+.separator{
+  width: 27vw;
+  height: 2px;
+  margin: 0.2rem 0;
+  background: black;
+}
+.profile_image{
+  /* height: 30vh; */
+  /* border: 2px solid; */
+  width: 27vw;
+}
+.profile_image img{
+  width: 100%;
+}
+.profile_desc{
+  padding: 1rem;
+  /* border: 2x solid; */
+  width: 27vw;
+  /* height: ; */
+}
+
+/* ================================================================================ */
+/* ABOUT */
+/* ================================================================================ */
+.column{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items:center ;
+  /* border: 2px solid; */
+  /* height: 100vh; */
+}
+
+.profile_picture{
+  width: 25rem;
+  height: 15rem;
+  /* border: 2px solid; */
+  margin: 1rem 0;
+}
+.profile_picture img{
+  width: 100%;
+  height: 100%;
+}
+.edit_button{
+  margin-top: 13rem;
+  margin-left: 3rem;
+  font-size: 20px;
+}
+.textarea{
+  margin-top: 1rem;
+  width: 90vw;
+  border: 2px solid;
+  border-radius: 10px;
+  font-size: 20px;
+  height: 6rem;
+  border: 0;
+  box-shadow: 0px 3px 22px rgb(0 0 0 / 30%);
+  padding: 1rem;
+}
+.textarea:focus{
+  box-shadow: none;
+}
+.about_save{
+  margin-top: 1rem;
+  padding: 0.7rem 1rem;
+  border-radius: 10px;
+  background: transparent;
+  font-size: 20px;
+  border: 2px solid #89c7b7;
+  transition: all 0.5s;
+}
+.about_save:hover{
+  background: #89c7b7;
+}

@@ -1,0 +1,28 @@
+{
+  "name": "blog-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js",
+    "frontend":"cd frontend && npm start",
+    "both":"concurrently \" npm run frontend \" \"npm start\" "
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.1",
+    "concurrently": "^7.0.0",
+    "cors": "^2.8.5",
+    "ejs": "^3.1.6",
+    "express": "^4.17.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^4.3.1",
+    "mongoose": "^6.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
