@@ -7,7 +7,7 @@ const authRoutes = require("./routes/auth");
 const blogRoutes = require('./routes/blog');
 
 const MONGO_URI =
-  "mongodb+srv://sakshi:sakshi@cluster0.v2o4h.mongodb.net/blogsWebsite?&w=majority";
+  "YOUR URL";
 
 const app = express();
 
