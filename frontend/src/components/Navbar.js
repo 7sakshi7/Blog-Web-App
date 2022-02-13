@@ -13,7 +13,7 @@ const Navbar = () => {
             <Link to="/about">About Me</Link>
           </li>
 
-          {user !== null ? (
+          {/* {user !== null ? ( */}
             <>
               <li>
                 <Link to="/publishblog">Publish Blog</Link>
@@ -22,9 +22,9 @@ const Navbar = () => {
                 <Link to="/myblog">My Blogs</Link>
               </li>
             </>
-          ) : (
-            ""
-          )}
+          {/* ) : ( */}
+            {/* "" */}
+          {/* )} */}
         </ul>
         <ul>
           {user !== null ? (

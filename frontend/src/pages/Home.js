@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 const blogImage = require("../images/images.jpg");
 const image1 = require("../images/login.jpg");
 const image2 = require("../images/signup3.webp");
@@ -25,14 +26,17 @@ const Home = () => {
       desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam sit aspernatur autem! Doloribus expedita illum dolorem voluptatem natus in voluptates mollitia adipisci, quas debitis necessitatibus aliquid fugiat, obcaecati qui consequuntur.",
     },
   ];
+
+  useEffect(() => {
+    
+  });
   return (
     <>
       <div className="home_body">
-        <div className="home_image">
+        {/* <div className="home_image">
           <img src={blogImage} alt="" />
-        </div>
+        </div> */}
         <div className="row">
-
           {blogs.map((blog, index) => {
             return (
               <div className="card" key={index}>

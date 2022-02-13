@@ -7,7 +7,7 @@ import {Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import MyBlogs from "./pages/MyBlogs";
 import About from './pages/About';
-import Publishblog from './pages/Publishblog';
+import Publishblog from './pages/PublishBlog';
 function App() {
   return (
     <>

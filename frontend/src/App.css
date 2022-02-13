@@ -3,7 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-body{
+body {
   overflow-x: hidden;
 }
 
@@ -205,7 +205,7 @@ input[type="file"] {
   align-items: center;
   justify-content: space-evenly;
 }
-.myblog_header{
+.myblog_header {
   /* height: 10vh; */
   /* border: 2px solid; */
   display: flex;
@@ -214,21 +214,21 @@ input[type="file"] {
   justify-content: center;
   margin: 1rem 0;
 }
-.separator{
+.separator {
   width: 27vw;
   height: 2px;
   margin: 0.2rem 0;
   background: black;
 }
-.profile_image{
+.profile_image {
   /* height: 30vh; */
   /* border: 2px solid; */
   width: 27vw;
 }
-.profile_image img{
+.profile_image img {
   width: 100%;
 }
-.profile_desc{
+.profile_desc {
   padding: 1rem;
   /* border: 2x solid; */
   width: 27vw;
@@ -238,31 +238,31 @@ input[type="file"] {
 /* ================================================================================ */
 /* ABOUT */
 /* ================================================================================ */
-.column{
+.column {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  align-items:center ;
+  align-items: center;
   /* border: 2px solid; */
   /* height: 100vh; */
 }
 
-.profile_picture{
+.profile_picture {
   width: 25rem;
   height: 15rem;
   /* border: 2px solid; */
   margin: 1rem 0;
 }
-.profile_picture img{
+.profile_picture img {
   width: 100%;
   height: 100%;
 }
-.edit_button{
+.edit_button {
   margin-top: 13rem;
   margin-left: 3rem;
   font-size: 20px;
 }
-.textarea{
+.textarea {
   margin-top: 1rem;
   width: 90vw;
   border: 2px solid;
@@ -273,10 +273,10 @@ input[type="file"] {
   box-shadow: 0px 3px 22px rgb(0 0 0 / 30%);
   padding: 1rem;
 }
-.textarea:focus{
+.textarea:focus {
   box-shadow: none;
 }
-.about_save{
+.about_save {
   margin-top: 1rem;
   padding: 0.7rem 1rem;
   border-radius: 10px;
@@ -285,6 +285,63 @@ input[type="file"] {
   border: 2px solid #89c7b7;
   transition: all 0.5s;
 }
-.about_save:hover{
+.about_save:hover {
   background: #89c7b7;
+}
+
+/* ================================================================================ */
+/* PUBLISH BLOG */
+/* ================================================================================ */
+.publish_body {
+  width: 100vw;
+  height: 100vh;
+  background: #f2f2f2;
+}
+form {
+  width: 50vw;
+  /* height: 70vh; */
+  display: block;
+  margin: auto;
+  transform: translateY(10%);
+  border-radius: 20px;
+  background: whitesmoke;
+  padding: 1rem 2rem;
+  box-shadow: -3px 3px 37px -11px rgb(0 0 0 / 50%);
+}
+
+form .input_group input {
+  margin: 1rem 0;
+  width: 40vw;
+  /* box-shadow: 0px 2px 23px 13px rgb(15 17 17 / 21%); */
+  border-radius: 10px;
+}
+form .input_group .textarea {
+  width: 40vw;
+  box-shadow: none;
+  background: transparent;
+  border: 2px solid;
+}
+form .input_group input:focus {
+  box-shadow: 0px 2px 0px 3px #0a1113;
+}
+form .image_preview {
+  width: 40%;
+  height: 5%;
+}
+form .image_preview .img {
+  width: 10vw;
+  height: 8rem;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+.publish_btn {
+  display: block;
+  margin: auto;
+  margin-top: 1rem;
+  background: cornflowerblue;
+}
+.publish_btn:hover {
+  background: cornflowerblue;
+  color: black;
 }
