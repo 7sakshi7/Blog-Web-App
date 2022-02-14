@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 const JWT_TOKEN = "mysecretkey";
 
 const fetchUser = (req, res, next) => {
-  const token = req.header("authToken");
+  const token = req.get("Authorization");
 
   if (!token) {
     return res
@@ -13,7 +13,7 @@ const fetchUser = (req, res, next) => {
   try {
       const data = jwt.verify(token,JWT_TOKEN);
       console.log(data);
-      req.user = data.user;
+      req.userId = data.userId;
       next();
   } catch (err) {
     console.log(err);

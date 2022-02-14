@@ -13,17 +13,36 @@ const SignUp = () => {
       email,
       password,
     };
-    const res = await fetch("http://localhost:8080/signup", {
+    fetch("http://localhost:8080/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(user),
-    });
+    })
+      .then((res) => {
+        if (res.status === 422) {
+          throw new Error(
+            "Validation Failed. Make sure the email address isn't used yet!"
+          );
+        }
 
-    const createdUser = await res.json();
-    console.log(createdUser);
-    history("/login");
+        if (res.status !== 200 && res.status !== 201) {
+          console.log("Error!");
+          throw new Error("Creating User Failed");
+        }
+        return res.json();
+      })
+      .then((resData) => {
+        console.log(resData);
+        history("/login");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    // const createdUser = await res.json();
+    // console.log(createdUser);
   }
   return (
     <>

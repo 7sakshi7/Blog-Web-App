@@ -16,13 +16,21 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-//   blogs: [
-//     {
-//       blodId: Schema.Types.ObjectId,
-//       ref: "Blog",
-//       required: true,
-//     },
-//   ],
+  aboutMe: {
+    type: String,
+  },
+  categories: {
+    type: String,
+  },
+  imageUrl: {
+    type: String,
+  },
+  blogs: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Blog",
+    },
+  ],
 });
 
-module.exports = mongoose.model('User',userSchema);
+module.exports = mongoose.model("User", userSchema);

@@ -1,20 +1,31 @@
 import React from "react";
 import { Link } from "react-router-dom";
-const Navbar = () => {
-  const user = localStorage.getItem("session");
+
+const Navbar = (props) => {
+  const user = localStorage.getItem("token");
+  // console.log('user =',user);
+
+  function logOut() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("userId");
+    props.updateNavbar();
+  }
+  
   return (
-    <div className="container-fluid nav">
+    <div
+      className="container-fluid nav"
+      style={{ position: "fixed", marginBottom: "1rem" }}
+    >
       <div className="container row">
         <ul>
           <li>
             <Link to="/">Home</Link>
           </li>
-          <li>
-            <Link to="/about">About Me</Link>
-          </li>
-
-          {/* {user !== null ? ( */}
+          {user !== null || props.isAuth ? (
             <>
+              <li>
+                <Link to="/about">About Me</Link>
+              </li>
               <li>
                 <Link to="/publishblog">Publish Blog</Link>
               </li>
@@ -22,18 +33,18 @@ const Navbar = () => {
                 <Link to="/myblog">My Blogs</Link>
               </li>
             </>
-          {/* ) : ( */}
-            {/* "" */}
-          {/* )} */}
+          ) : (
+            ""
+          )}
         </ul>
         <ul>
-          {user !== null ? (
+          {user !== null || props.isAuth ? (
             <>
               <li>
                 <a href="/">Search</a>
               </li>
-              <li>
-                <a href="/">Log Out</a>
+              <li style={{ cursor: "pointer" }} onClick={logOut}>
+                Log Out
               </li>
             </>
           ) : (

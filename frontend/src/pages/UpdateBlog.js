@@ -1,18 +1,21 @@
 import React from "react";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { generateBase64FromImage } from "../util/image";
 
-const Publishblog = () => {
+const UpdateBlog = () => {
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
   const [desc, setDesc] = useState("");
   const [image, setImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
+  const { blogId } = useParams();
+  const token = localStorage.getItem("token");
 
   let navigate = useNavigate();
 
   function imageHandler(e) {
+    if (!e.target.files[0]) return;
     setImage(e.target.files[0]);
     generateBase64FromImage(e.target.files[0])
       .then((b64) => {
@@ -23,7 +26,7 @@ const Publishblog = () => {
       });
   }
 
-  function publishBlog() {
+  function updateBlog() {
     const formData = new FormData();
     formData.append("title", title);
     formData.append("desc", desc);
@@ -33,8 +36,8 @@ const Publishblog = () => {
     const token = localStorage.getItem("token");
     console.log(token);
 
-    let url = "http://localhost:8080/publishblog";
-    let method = "POST";
+    let url = "http://localhost:8080/updateBlog/" + blogId;
+    let method = "PUT";
 
     fetch(url, {
       method: method,
@@ -46,7 +49,7 @@ const Publishblog = () => {
       .then((res) => {
         console.log(res);
         if (res.status !== 200 && res.status !== 201) {
-          throw new Error("Publish Blog Failed");
+          throw new Error("Update Blog Failed");
         }
         navigate("/myblog");
         return res.json();
@@ -55,6 +58,33 @@ const Publishblog = () => {
         console.log(err);
       });
   }
+
+  function fetchBlogDetails() {
+    fetch("http://localhost:8080/" + blogId, {
+      headers: {
+        Authorization: token,
+      },
+    })
+      .then((res) => {
+        if (res.status !== 200) {
+          throw new Error("Failed To fetch Blog");
+        }
+        return res.json();
+      })
+      .then((resData) => {
+        setTitle(resData.title);
+        setDesc(resData.desc);
+        setCategory(resData.category[0]);
+        console.log(resData);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  useEffect(() => {
+    fetchBlogDetails();
+  }, []);
 
   return (
     <div className="publish_body">
@@ -119,7 +149,7 @@ const Publishblog = () => {
               {/* {desc} */}
             </textarea>
           </div>
-          <button className="login_btn publish_btn" onClick={publishBlog}>
+          <button className="login_btn publish_btn" onClick={updateBlog}>
             PUBLISH BLOG!
           </button>
         </form>
@@ -128,4 +158,4 @@ const Publishblog = () => {
   );
 };
 
-export default Publishblog;
+export default UpdateBlog;

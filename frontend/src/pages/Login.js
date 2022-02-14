@@ -1,25 +1,45 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   let history = useNavigate();
 
   async function login() {
     const user = { email, password };
-    const res = await fetch("http://localhost:8080/login", {
+    fetch("http://localhost:8080/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(user),
-    });
-    
-    const loggedUser = await res.json();
-    console.log(loggedUser.authToken);
-    localStorage.setItem("session", JSON.stringify(loggedUser.authToken));
-    history("/");
+    })
+      .then((res) => {
+        if (res.status === 422) {
+          throw new Error("Validation failed");
+        }
+
+        if (res.status !== 200 && res.status !== 201) {
+          throw new Error("Could Not authenticate");
+        }
+
+        return res.json();
+      })
+      .then((resData) => {
+        console.log(resData);
+        localStorage.setItem("token", resData.token);
+        localStorage.setItem("userId", resData.userId);
+        props.updateNavbar();
+        history("/", { isAuth: true });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    // const loggedUser = await res.json();
+    // console.log(loggedUser.authToken);
+    // localStorage.setItem("session", JSON.stringify(loggedUser.authToken));
   }
   return (
     <>

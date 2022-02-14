@@ -21,7 +21,7 @@ exports.postSignUp = async (req, res, next) => {
     user = await User.create({
       username,
       email,
-      password:securePassword,
+      password: securePassword,
     });
 
     const data = {
@@ -44,7 +44,7 @@ exports.postLogin = async (req, res, next) => {
   try {
     let user = await User.findOne({ email });
     if (!user) {
-      return res.status(400).json({ error: "Sorry No Such User Exists" });
+      return res.status(401).json({ error: "Sorry No Such User Exists" });
     }
 
     const comparePassword = await bcrypt.compare(password, user.password);
@@ -53,14 +53,14 @@ exports.postLogin = async (req, res, next) => {
       return res.status(400).json({ error: "Sorry No Such User Exists" });
     }
 
-    const data = {
-      user: {
-        id: user.id,
+    const token = jwt.sign(
+      {
+        email: user.email,
+        userId: user._id.toString(),
       },
-    };
-
-    const authToken = jwt.sign(data, JWT_TOKEN);
-    return res.json({ authToken });
+      JWT_TOKEN
+    );
+    return res.status(200).json({ token, userId: user._id });
   } catch (err) {
     return res.status(500).send("Some Error Occured :(");
   }
